@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import 'participacion_detalle_tab.dart';
 
 class ParticipacionTab extends StatelessWidget {
   const ParticipacionTab({super.key});
+
+  final List<DetalleParticipacion> extranjeroData = const [
+    DetalleParticipacion('AFRICA', '254', '33', '12.992%', '221', '87.008%'),
+    DetalleParticipacion('AMERICA', '596,827', '269,733', '45.194%', '327,094', '54.806%'),
+    DetalleParticipacion('ASIA', '33,656', '9,848', '29.260%', '23,808', '70.740%'),
+    DetalleParticipacion('EUROPA', '248,753', '118,527', '47.648%', '130,226', '52.352%'),
+    DetalleParticipacion('OCEANIA', '4,775', '2,126', '44.523%', '2,649', '55.477%'),
+    DetalleParticipacion('TOTAL', '884,265', '400,267', '45.265%', '483,998', '54.735%', isTotal: true),
+  ];
+
+  final List<DetalleParticipacion> nacionalData = const [
+    DetalleParticipacion('AMAZONAS', '284,813', '218,655', '76.771%', '66,158', '23.229%'),
+    DetalleParticipacion('ANCASH', '818,289', '675,992', '82.610%', '142,297', '17.390%'),
+    DetalleParticipacion('APURIMAC', '279,531', '225,584', '80.700%', '53,947', '19.300%'),
+    DetalleParticipacion('AREQUIPA', '1,040,111', '896,871', '86.228%', '143,240', '13.772%'),
+    DetalleParticipacion('AYACUCHO', '422,963', '318,172', '75.224%', '104,791', '24.776%'),
+    DetalleParticipacion('TOTAL', '22,017,689', '18,342,629', '83.308%', '3,675,060', '16.692%', isTotal: true),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +30,7 @@ class ParticipacionTab extends StatelessWidget {
       children: [
         const Text(
           'RESUMEN GENERAL DE PARTICIPACIÓN',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: OnpeColors.navbarBlue,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: OnpeColors.navbarBlue),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 16),
@@ -28,11 +43,7 @@ class ParticipacionTab extends StatelessWidget {
 
         const Text(
           'DETALLE DE PARTICIPACIÓN',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.black54,
-          ),
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54),
         ),
         const SizedBox(height: 16),
 
@@ -42,20 +53,33 @@ class ParticipacionTab extends StatelessWidget {
           subtitle: 'Participación: 44.018%',
           iconData: Icons.public,
           onTap: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Abriendo detalle del extranjero...')),
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ParticipacionDetalleTab(
+                  title: 'Electores en el Extranjero',
+                  data: extranjeroData,
+                ),
+              ),
             );
           },
         ),
         const SizedBox(height: 12),
+
         _buildActionCard(
           context: context,
           title: 'Electores Territorio Nacional',
           subtitle: 'Participación: 81.543%',
           iconData: Icons.map_outlined,
           onTap: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Abriendo detalle nacional...')),
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ParticipacionDetalleTab(
+                  title: 'Electores Territorio Nacional',
+                  data: nacionalData,
+                ),
+              ),
             );
           },
         ),
