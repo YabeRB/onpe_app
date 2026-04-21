@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "912943745444",
+    "project_id": "onpe-firebase-d0138",
+    "storage_bucket": "onpe-firebase-d0138.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912943745444:android:3ed391318bee5169ee5931",
+        "android_client_info": {
+          "package_name": "com.example.onpe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912943745444-eu84aui59avi95v76cc16ilsc01qce95.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.onpe_app",
+            "certificate_hash": "7b184d9a57914fb0d0260ebff3caaa7eef31a390"
+          }
+        },
+        {
+          "client_id": "912943745444-ihrsm1rek95khh0g907k0svvt0egvdvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDbPwLiAZAE7XA7599ftNkrp347U6VNCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912943745444-ihrsm1rek95khh0g907k0svvt0egvdvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'views/presidencial_tab.dart';
 import 'views/actas_tab.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'views/participacion_tab.dart';
+import 'views/auth_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const OnpeApp());
 }
 
@@ -19,7 +25,18 @@ class OnpeApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: OnpeColors.background,
       ),
-      home: const MainScreen(),
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          }
+          if (snapshot.hasData) {
+            return const MainScreen();
+          }
+          return const AuthScreen();
+        },
+      ),
     );
   }
 }
